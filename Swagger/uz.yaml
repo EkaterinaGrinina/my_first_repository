@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: API для Uzmarket
+  description: Эндпойнты для Uzmarket (Backend)
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/v1
+
+tags:
+
+  - name: Stories
+    description: Сторис
+
+
+paths:
+
+  /Stories/:
+    get:
+      tags: [Stories]
+      summary: "Получение всех stories"
+      description: Получить сторис
+      operationId: getStories
+      responses:
+        200:
+          description: Успешно, список всех сторис
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Stories"
+        400:
+          description: Ошибка в запросе
+        500:
+          description: Внутренняя ошибка сервера
+
+components:
+  schemas:
+    Stories:
+      type: object
+      description: Название истории
+      properties:
+        description:
+          type: string
+          description: описание
+        id:
+          type: integer
+          description: id сториес
+        image:
+          type: string
+          description: изображение
+        link:
+          type: string
+          description: ссылка
+          example: https://blablabla.ru
+        order:
+          type: integer
+          description: порядок выдачи
+        title:
+          type: string
+          description: описание истории
